@@ -97,7 +97,7 @@ form textarea {
 form button[type="submit"] {
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    background-color: #8b0000;
+    background-color: #cc99ff;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -106,7 +106,7 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #a52a2a;
+    background-color: #3c9ae7;
 }
 
 /* Footer styles */
