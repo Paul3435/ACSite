@@ -1,13 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>ACSite</title>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+<!--width="441" height="227"-->
 
 <body>
-    <h1>Welcome Cleo! :p</h1>
-    <iframe width="441" height="227" src="https://w2.countingdownto.com/4651216" frameborder="0"></iframe>
+    <header>
+        <h1>Azazel and Cleopatra</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Waning Crescent</a></li>
+                <li><a href="#">Moon</a></li>
+                <li><a href="#">Waxing crescent</a></li>
+            </ul>
+        </nav>
+        <iframe src="https://w2.countingdownto.com/4651216" frameborder="0"></iframe>
+    </header>
+    <main>
+        <article>
+            <h2>Write your thougts below</h2>
+            <form id="blog-form">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" rows="10" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </article>
+    </main>
+    <footer>
+        <p>&lt;3</p>
+    </footer>
+    <script>
+        const form = document.getElementById("blog-form");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const title = document.getElementById("title").value;
+            const content = document.getElementById("content").value;
+            const data = {
+                title,
+                content
+            };
+            const json = JSON.stringify(data);
+            const blob = new Blob([json], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `${title}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            form.reset();
+        });
+    </script>
 </body>
 
 </html>
